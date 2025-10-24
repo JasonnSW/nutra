@@ -22,6 +22,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { inventorySchema } from "../schemas/inventory";
 import { useCreateBatch } from "../mutations/use-create-batch";
+import { INGREDIENT_GROUPS } from "../data/invetory";
 
 export function AddBatchForm() {
   const { mutate: createBatch, isPending } = useCreateBatch();
@@ -33,7 +34,7 @@ export function AddBatchForm() {
       weight: "",
       unit: "",
       category: "",
-      price: "",
+      pricePerKg: "",
       storageLocation: "",
       notes: "",
     },
@@ -61,13 +62,19 @@ export function AddBatchForm() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="Bayam">Bayam</SelectItem>
-                    <SelectItem value="Tomat">Tomat</SelectItem>
-                    <SelectItem value="Wortel">Wortel</SelectItem>
-                    <SelectItem value="Ayam">Ayam</SelectItem>
-                    <SelectItem value="Telur">Telur</SelectItem>
-                    <SelectItem value="Jeruk">Jeruk</SelectItem>
-                    <SelectItem value="Beras">Beras</SelectItem>
+                    {INGREDIENT_GROUPS.map((group) => (
+                      <div key={group.label}>
+                        <div className="px-2 py-1 text-xs font-semibold text-muted-foreground">
+                          {group.label}
+                        </div>
+                        {group.items.map((item) => (
+                          <SelectItem key={item.value} value={item.value}>
+                            {item.label ?? item.value}
+                          </SelectItem>
+                        ))}
+                        <div className="my-1 border-t border-muted/20" />
+                      </div>
+                    ))}
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -88,10 +95,18 @@ export function AddBatchForm() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="sayuran">Sayuran</SelectItem>
-                    <SelectItem value="buah">Buah</SelectItem>
-                    <SelectItem value="protein">Protein</SelectItem>
-                    <SelectItem value="bahan_pokok">Bahan Pokok</SelectItem>
+                    <SelectItem value="KARBOHIDRAT">Karbohidrat</SelectItem>
+                    <SelectItem value="PROTEIN_HEWANI">
+                      Protein Hewani
+                    </SelectItem>
+                    <SelectItem value="PROTEIN_NABATI">
+                      Protein Nabati
+                    </SelectItem>
+                    <SelectItem value="SAYURAN">Sayuran</SelectItem>
+                    <SelectItem value="BUAH">Buah</SelectItem>
+                    <SelectItem value="BAHAN_BUMBU">Bahan Bumbu</SelectItem>
+                    <SelectItem value="BAHAN_LAIN">Bahan Lain</SelectItem>
+                    <SelectItem value="MINUMAN">Minuman</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -140,7 +155,7 @@ export function AddBatchForm() {
 
           <FormField
             control={form.control}
-            name="price"
+            name="pricePerKg"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Harga</FormLabel>
@@ -166,7 +181,6 @@ export function AddBatchForm() {
                   </FormControl>
                   <SelectContent>
                     <SelectItem value="kulkas">Kulkas</SelectItem>
-                    {/* <SelectItem value="kulkas 2">Kulkas 2</SelectItem> */}
                     <SelectItem value="freezer">Freezer</SelectItem>
                     <SelectItem value="gudang">Gudang Kering</SelectItem>
                   </SelectContent>

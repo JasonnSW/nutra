@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { MobileNav } from "@/components/mobile-nav";
 import Image from "next/image";
-import logo from "@/public/pantara-logo.png";
+import logo from "@/public/nutra-logo.svg";
 import { UserNav } from "@/components/user-nav";
 import { DashboardNav } from "@/components/dashboard-nav";
 import ComingSoon from "@/public/coming-soon.svg";
@@ -17,7 +17,7 @@ export default function NotFound() {
           <nav className="flex items-center space-x-4 lg:space-x-6">
             <div className="flex flex-col items-start justify-center">
               <div className="relative flex items-center">
-                <Image width={180} height={250} src={logo} alt="pantara" />
+                <Image width={180} height={250} src={logo} alt="nutra" />
               </div>
             </div>
           </nav>

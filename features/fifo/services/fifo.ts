@@ -34,9 +34,13 @@ export async function getAllByMenu() {
 export async function createMenu(payload: any) {
   console.log("Creating menu with payload:", payload);
   const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value || "";
   // console.log("Token:", token);
   const res = apiClient("/api/batches/use-for-menu", "POST", {
     body: JSON.stringify(payload),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
   // console.log("Batch created:", res);
   return res;
@@ -48,6 +52,9 @@ export async function createMenuManual(payload: any) {
   // console.log("Token:", token);
   const res = apiClient("/api/batches/use-manual", "POST", {
     body: JSON.stringify(payload),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
   // console.log("Batch created:", res);
   return res;

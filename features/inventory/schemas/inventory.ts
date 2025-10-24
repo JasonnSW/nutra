@@ -10,7 +10,7 @@ export const inventorySchema = z.object({
     }),
   unit: z.string().min(1, "Pilih satuan."),
   category: z.string().min(1, "Pilih kategori bahan."),
-  price: z
+  pricePerKg: z
     .string()
     .min(1, "Masukkan harga bahan.")
     .refine((val) => !isNaN(Number(val)), {

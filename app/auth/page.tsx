@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LoginForm } from "@/features/auth/components/login-form";
 import { RegisterForm } from "@/features/auth/components/register-form";
 import Image from "next/image";
-import logo from "@/public/logo.svg";
+import logo from "@/public/nutra-logo.svg";
 
 export default function AuthPage() {
   return (
@@ -13,11 +13,12 @@ export default function AuthPage() {
           <div className="relative flex items-center justify-center">
             <Image
               src={logo}
-              alt="Pantara Logo"
-              width={400}
-              height={400}
-              className="flex items-center justify-center -translate-x-8"
+              alt="Nutra Logo"
+              width={50}
+              height={50}
+              className="flex items-center justify-center"
             />
+            <p className="text-primary font-bold text-2xl">Nutra</p>
           </div>
         </div>
 
@@ -54,7 +55,7 @@ export default function AuthPage() {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-500">
-            © 2025 Pantara. Hak Cipta Dilindungi.
+            © 2025 Nutra. Hak Cipta Dilindungi.
           </p>
         </div>
       </div>

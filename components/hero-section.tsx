@@ -48,7 +48,7 @@ export function HeroSection() {
               />
             </button>
             <Link
-              href="/register"
+              href="/auth"
               className="px-8 py-3 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-primary-foreground transition flex items-center justify-center gap-2"
             >
               Coba Sekarang

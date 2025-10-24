@@ -24,7 +24,7 @@ export function CTASection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
           <Link
-            href="/register"
+            href="/auth"
             className="px-8 py-4 rounded-full bg-primary-foreground text-primary font-bold hover:bg-primary-foreground/90 transition flex items-center justify-center gap-2 group text-lg"
           >
             Coba Gratis Sekarang
@@ -34,7 +34,7 @@ export function CTASection() {
             />
           </Link>
           <Link
-            href="#"
+            href="/auth"
             className="px-8 py-4 rounded-full border-2 border-primary-foreground text-primary-foreground font-bold hover:bg-primary-foreground/10 transition flex items-center justify-center gap-2"
           >
             Hubungi Sales

@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ForecastSummary } from "@/features/forecast/components/forecast-summary";
 import { ForecastRecommendation } from "@/features/forecast/components/forecast-recommendation";
-import { ForecastSettings } from "@/features/forecast/components/forecast-settings";
 import { getDehydratedForecastState } from "@/features/forecast/queries/forecast";
 import { HydrationBoundary } from "@tanstack/react-query";
 

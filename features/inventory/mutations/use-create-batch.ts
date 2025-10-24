@@ -1,24 +1,31 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createBatch } from "@/features/inventory/services/inventory";
+import {
+  createBatch,
+  InventoryItem,
+} from "@/features/inventory/services/inventory";
 import { toast } from "sonner";
 
 export function useCreateBatch() {
-  const queryClient = useQueryClient();
+  const qc = useQueryClient();
 
   return useMutation({
     mutationFn: createBatch,
     onSuccess: (newBatch: any) => {
-      queryClient.setQueryData(["inventory", "items"], (old: any) => {
-        if (!old || !Array.isArray(old)) return [newBatch];
-        if (old.some((item) => item.id === newBatch.id)) return old;
-        return [newBatch, ...old];
+      qc.setQueryData<InventoryItem[]>(["inventory", "items"], (old) => {
+        const prev = old ?? [];
+        if (prev.some((i) => i.id === newBatch.id)) return prev;
+        return [newBatch, ...prev];
       });
       console.log("New batch:", newBatch);
-      queryClient.invalidateQueries({ queryKey: ["inventory", "items"] });
-      queryClient.invalidateQueries({ queryKey: ["notifications"] });
-      queryClient.invalidateQueries({ queryKey: ["notifications", "summary"] });
+      qc.invalidateQueries({
+        queryKey: ["inventory", "items"],
+        refetchType: "inactive",
+      });
+
+      qc.invalidateQueries({ queryKey: ["notifications"] });
+      qc.invalidateQueries({ queryKey: ["notifications", "summary"] });
 
       toast.success("Bahan berhasil ditambahkan ke inventaris.");
     },

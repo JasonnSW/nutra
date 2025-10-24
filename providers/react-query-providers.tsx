@@ -3,22 +3,22 @@ import {
   HydrationBoundary,
   QueryClient,
   QueryClientProvider,
+  type DehydratedState,
 } from "@tanstack/react-query";
 import { ReactNode, useState } from "react";
 
-export function ReactQueryProvider({
-  children,
-  dehydratedState,
-}: {
+type Props = {
   children: ReactNode;
-  dehydratedState?: unknown;
-}) {
+  dehydratedState?: DehydratedState | null;
+};
+
+export function ReactQueryProvider({ children, dehydratedState }: Props) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 1000 * 60 * 5, 
+            staleTime: 1000 * 60 * 5,
             refetchOnMount: false,
             refetchOnWindowFocus: false,
           },
@@ -28,7 +28,9 @@ export function ReactQueryProvider({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>
+      <HydrationBoundary state={dehydratedState ?? undefined}>
+        {children}
+      </HydrationBoundary>
     </QueryClientProvider>
   );
 }

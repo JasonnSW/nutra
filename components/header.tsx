@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,11 +12,17 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-background border-b border-border">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground text-sm font-bold">N</span>
-          </div>
-          <span className="text-foreground">Nutra</span>
+        <Link
+          href="/auth"
+          className="flex items-center gap-2 font-bold text-xl"
+        >
+          <Image
+            src="/nutra-logo.svg"
+            width={50}
+            height={50}
+            alt="nutra logo"
+          />
+          <span className="text-foreground text-primary">Nutra</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -49,7 +56,7 @@ export function Header() {
         {/* CTA Button */}
         <div className="hidden md:flex items-center gap-3">
           <Link
-            href="/dashboard"
+            href="/auth"
             className="px-6 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition"
           >
             Coba Sekarang
@@ -92,13 +99,13 @@ export function Header() {
             </Link>
             <div className="flex gap-3 pt-4">
               <Link
-                href="/login"
+                href="/auth"
                 className="flex-1 px-4 py-2 rounded-full border border-primary text-primary text-center hover:bg-primary hover:text-primary-foreground transition"
               >
                 Masuk
               </Link>
               <Link
-                href="/register"
+                href="/auth"
                 className="flex-1 px-4 py-2 rounded-full bg-primary text-primary-foreground text-center hover:bg-primary/90 transition"
               >
                 Coba Sekarang

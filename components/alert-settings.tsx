@@ -135,7 +135,7 @@ export function AlertSettings() {
                               <div className="space-y-0.5">
                                 <FormLabel>Notifikasi Aplikasi</FormLabel>
                                 <FormDescription>
-                                  Peringatan di dalam aplikasi Pantara
+                                  Peringatan di dalam aplikasi Nutra
                                 </FormDescription>
                               </div>
                               <FormControl>

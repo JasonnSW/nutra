@@ -42,11 +42,6 @@ const navItems = [
     icon: TrendingUp,
   },
   {
-    title: "Penggunaan",
-    href: "/dashboard/usage",
-    icon: ShoppingCart,
-  },
-  {
     title: "Pengguna",
     href: "/dashboard/users",
     icon: Users,
@@ -63,12 +58,9 @@ export function DashboardNav() {
 
   return (
     <nav className="grid items-start px-4 py-4">
-      <Link
-        href="/dashboard"
-        className="flex items-center gap-2 px-2 py-4 mb-6"
-      >
+      <Link href="/" className="flex items-center gap-2 px-2 py-4 mb-6">
         <Home className="w-6 h-6 text-primary" />
-        <span className="text-lg font-bold">Pantara</span>
+        <span className="text-lg font-bold">Nutra</span>
       </Link>
       <div className="grid gap-1">
         {navItems.map((item, index) => (

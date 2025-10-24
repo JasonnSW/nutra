@@ -44,7 +44,7 @@ export function Features() {
     <section id="fitur" className="border-b border-[#e8f5e9] bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="text-balance text-2xl font-semibold md:text-3xl">
-          Fitur Unggulan Pantara
+          Fitur Unggulan Nutra
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ icon: Icon, title, desc, img, imgAlt }) => (

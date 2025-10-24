@@ -19,8 +19,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { MoreHorizontal, Search } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
-import { getAllInventoryItems } from "../services/inventory";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { getAllInventoryItems, InventoryItem } from "../services/inventory";
 
 interface InventoryTableProps {
   category?: "all" | "SAYURAN" | "BUAH" | "PROTEIN" | "BAHAN_POKOK";
@@ -29,26 +29,35 @@ interface InventoryTableProps {
 export function InventoryTable({ category = "all" }: InventoryTableProps) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { data, isLoading } = useQuery<any, any, any>({
+  const { data = [], isLoading } = useQuery<InventoryItem[]>({
     queryKey: ["inventory", "items"],
     queryFn: getAllInventoryItems,
-    placeholderData: (previousData: any) => previousData,
+    placeholderData: keepPreviousData,
   });
 
   const items = Array.isArray(data) ? data : [];
 
   const filteredData = items
     .filter((item: any) => {
+      const isProtein =
+        item.category === "PROTEIN_HEWANI" ||
+        item.category === "PROTEIN_NABATI";
+
+      const isBahanPokok =
+        item.category === "KARBOHIDRAT" ||
+        item.category === "BAHAN_BUMBU" ||
+        item.category === "BAHAN_LAIN";
+
       const matchesCategory =
         category === "all" ||
         (category === "SAYURAN" && item.category === "SAYURAN") ||
         (category === "BUAH" && item.category === "BUAH") ||
-        (category === "PROTEIN" && item.category === "PROTEIN") ||
-        (category === "BAHAN_POKOK" && item.category === "BAHAN_POKOK");
+        (category === "PROTEIN" && isProtein) ||
+        (category === "BAHAN_POKOK" && isBahanPokok);
 
       const matchesSearch =
-        item.batchCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.ingredientName.toLowerCase().includes(searchTerm.toLowerCase());
+        item.batchCode?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.ingredientName?.toLowerCase().includes(searchTerm.toLowerCase());
 
       return matchesCategory && matchesSearch;
     })
