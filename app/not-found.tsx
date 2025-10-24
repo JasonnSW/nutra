@@ -17,7 +17,7 @@ export default function NotFound() {
           <nav className="flex items-center space-x-4 lg:space-x-6">
             <div className="flex flex-col items-start justify-center">
               <div className="relative flex items-center">
-                <Image width={180} height={250} src={logo} alt="nutra" />
+                <Image width={50} height={50} src={logo} alt="nutra" />
               </div>
             </div>
           </nav>
