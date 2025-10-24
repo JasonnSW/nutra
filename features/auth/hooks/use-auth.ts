@@ -10,7 +10,7 @@ export function useLogin() {
   return useMutation({
     mutationFn: loginAction,
     onSuccess: () => {
-      toast.success("Selamat datang kembali di Pantara");
+      toast.success("Selamat datang kembali di Nutra");
       router.push("/dashboard");
     },
     onError: (error: any) => {

@@ -6,7 +6,7 @@ export function Impact() {
           Lebih dari Sekadar Manajemen Stok
         </h2>
         <p className="mt-3 max-w-3xl text-[#212121]/80">
-          Pantara membantu menghemat hingga 20% bahan pangan segar, memperkuat
+          Nutra membantu menghemat hingga 20% bahan pangan segar, memperkuat
           ketahanan pangan, dan membuka peluang ekonomi lokal. Mendukung SDG 2:
           Zero Hunger & SDG 12: Responsible Consumption and Production.
         </p>

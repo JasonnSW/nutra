@@ -11,7 +11,7 @@ export function Hero() {
     ? "/ai-dashboard.jpg"
     : "/stacked-fresh-produce-crates-in-school-kitchen-sto.jpg";
   const mainImageAlt = isManage
-    ? "Dashboard FIFO & stok Pantara"
+    ? "Dashboard FIFO & stok Nutra"
     : "Tumpukan bahan segar di penyimpanan dapur sekolah";
   const mainLabel = isManage ? "Kelola Stok (FIFO)" : "Snapshot Dapur MBG";
   const bar = isManage
@@ -32,9 +32,7 @@ export function Hero() {
         <div>
           <h1 className="text-balance text-3xl font-semibold leading-tight text-[#212121] md:text-5xl">
             {"Kurangi Food Loss, Maksimalkan "}
-            <span className="text-[#4caf50]">
-              {"Dampak Gizi dengan Pantara"}
-            </span>
+            <span className="text-[#4caf50]">{"Dampak Gizi dengan Nutra"}</span>
           </h1>
           <p className="mt-4 text-pretty text-[#212121]/80 md:text-lg">
             Platform cerdas berbasis AI & IoT untuk memantau, memprediksi, dan
@@ -48,8 +46,8 @@ export function Hero() {
               Coba Gratis
             </Button>
             <Image
-              src="/pantara-icon.png"
-              alt="Ikon Pantara"
+              src="/nutra-logo.svg"
+              alt="Ikon nutra"
               width={36}
               height={36}
               className="hidden md:block"

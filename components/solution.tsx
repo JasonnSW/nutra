@@ -14,7 +14,7 @@ export function Solution() {
           Solusi Cerdas Berbasis Data
         </h2>
         <p className="mt-3 max-w-3xl text-[#212121]/80">
-          Pantara membantu staf mengelola stok bahan segar secara otomatis dan
+          Nutra membantu staf mengelola stok bahan segar secara otomatis dan
           prediktif—mulai dari penerimaan, pemakaian, hingga redistribusi.
         </p>
 

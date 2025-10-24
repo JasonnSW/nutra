@@ -49,7 +49,7 @@ export function Visuals() {
           </h2>
           <p className="hidden text-sm text-[#212121]/70 md:block">
             Sorotan bahan segar, deteksi pembusukan, dan visualisasi fitur
-            Pantara.
+            Nutra.
           </p>
         </div>
 

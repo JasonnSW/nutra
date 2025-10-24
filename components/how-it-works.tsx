@@ -3,7 +3,7 @@ import { UserPlus, Database, Bell } from "lucide-react";
 const steps = [
   { icon: UserPlus, title: "Daftar & buat akun" },
   { icon: Database, title: "Masukkan data stok bahan segar" },
-  { icon: Bell, title: "Pantara bantu prediksi & notifikasi otomatis" },
+  { icon: Bell, title: "Nutra bantu prediksi & notifikasi otomatis" },
 ];
 
 export function HowItWorks() {
