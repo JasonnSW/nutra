@@ -51,7 +51,10 @@ import { cn } from "@/lib/utils";
 import { DateRange } from "react-day-picker";
 import { Calendar } from "@/components/ui/calendar";
 import { useQuery } from "@tanstack/react-query";
-import { getIngredientUsage, getPredictionForecastDashboard } from "../services/forecast";
+import {
+  getIngredientUsage,
+  getPredictionForecastDashboard,
+} from "../services/forecast";
 import { toast } from "sonner";
 import { usePredictionDate } from "@/features/forecast/stores/forecast";
 import { getForecastDateRange } from "../utils/get-date-range";
@@ -155,7 +158,11 @@ export function ForecastSummary() {
 
   const { data: currentIngredient } = useQuery({
     enabled: !!lastFrom && !!lastTo,
-    queryKey: ["forecast-ingredient-usage", lastFrom.toISOString(), lastTo.toISOString()],
+    queryKey: [
+      "forecast-ingredient-usage",
+      lastFrom.toISOString(),
+      lastTo.toISOString(),
+    ],
     queryFn: () => getIngredientUsage(lastFrom, lastTo),
     placeholderData: (previousData) => previousData,
   });
@@ -261,7 +268,7 @@ export function ForecastSummary() {
                   className={cn(
                     "text-xs px-3 py-1 rounded-full whitespace-nowrap",
                     categoryColorMap[category.Kategori] ||
-                    "text-gray-700 bg-gray-100"
+                      "text-gray-700 bg-gray-100"
                   )}
                 >
                   {category.Kategori}: {category.Prediksi_Kebutuhan_Total_kg} kg
@@ -517,8 +524,9 @@ export function ForecastSummary() {
                   </div>
                   <div className="flex items-center">
                     <div
-                      className={`text-sm font-medium flex items-center ${menu.change > 0 ? "text-green-500" : "text-red-500"
-                        }`}
+                      className={`text-sm font-medium flex items-center ${
+                        menu.change > 0 ? "text-green-500" : "text-red-500"
+                      }`}
                     >
                       {menu.change > 0 ? (
                         <ArrowUpIcon className="h-4 w-4 mr-1" />
@@ -606,4 +614,3 @@ export const CustomTooltipContent = ({ active, payload }: any) => {
   }
   return null;
 };
-

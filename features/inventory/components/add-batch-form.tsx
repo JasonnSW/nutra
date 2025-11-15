@@ -22,7 +22,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { inventorySchema } from "../schemas/inventory";
 import { useCreateBatch } from "../mutations/use-create-batch";
-import { INGREDIENT_GROUPS } from "../data/invetory";
+import { INGREDIENT_GROUPS } from "../data/inventory";
 
 export function AddBatchForm() {
   const { mutate: createBatch, isPending } = useCreateBatch();

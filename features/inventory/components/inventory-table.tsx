@@ -20,7 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { MoreHorizontal, Search } from "lucide-react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { getAllInventoryItems, InventoryItem } from "../services/inventory";
+import { getAllInventoryItems } from "../services/inventory";
 
 interface InventoryTableProps {
   category?: "all" | "SAYURAN" | "BUAH" | "PROTEIN" | "BAHAN_POKOK";
@@ -29,10 +29,10 @@ interface InventoryTableProps {
 export function InventoryTable({ category = "all" }: InventoryTableProps) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { data = [], isLoading } = useQuery<InventoryItem[]>({
+  const { data, isLoading } = useQuery<any, any, any>({
     queryKey: ["inventory", "items"],
     queryFn: getAllInventoryItems,
-    placeholderData: keepPreviousData,
+    placeholderData: (previousData: any) => previousData,
   });
 
   const items = Array.isArray(data) ? data : [];
